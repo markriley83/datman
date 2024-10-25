@@ -1,0 +1,106 @@
+// recreation of the DTD file as classes based on http://www.rpbourret.com/xml/DTDToDatabase.htm
+
+class Datafile {
+    Header header; // Nullable, zero or one
+    Game[] games;  // Minimum of 1
+    String build;  // Nullable
+    String debug;  // (yes|no) "no"
+}
+
+class Header {
+    String name;
+    String description;
+    String category;       // Nullable, zero or one
+    String version;
+    String date;           // Nullable, zero or one
+    String author;
+    String email;          // Nullable, zero or one
+    String homepage;       // Nullable, zero or one
+    String url;            // Nullable, zero or one
+    String comment;        // Nullable, zero or one
+    Clrmamepro clrmamepro; // Nullable, zero or one
+    Romcenter romcenter;   // Nullable, zero or one
+}
+
+class Clrmamepro {
+    String header;       // Nullable
+    String forcemerging; // (none|split|full) "split"
+    String forcenodump;  // (obsolete|required|ignore) "obsolete"
+    String forcepacking; // (zip|unzip) "zip"
+}
+
+class Romcenter {
+    String plugin;         // Nullable
+    String rommode;        // (merged|split|unmerged) "split"
+    String biosmode;       // (merged|split|unmerged) "split"
+    String samplemode;     // (merged|unmerged) "merged"
+    String lockrommode;    // (yes|no) "no"
+    String lockbiosmode;   // (yes|no) "no"
+    String locksamplemode; // (yes|no) "no"
+}
+
+class Game {
+    Comment[] comments;  // Unclear, zero to many
+    String description;  // Unclear
+    String name;
+    String sourcefile;   // Nullable
+    String isbios;       // (yes|no) "no"
+    String cloneof;      // Nullable
+    String romof;        // Nullable
+    String sampleof;     // Nullable
+    String board;        // Nullable
+    String rebuildto;    // Nullable
+    String year;         // Nullable, zero or one
+    String manufacturer; // Nullable, zero or one
+    Release[] releases;  // zero to many
+    Biosset[] biossets;  // zero to many
+    Rom[] roms;          // zero to many
+    Disk[] disks;        // zero to many
+    Sample[] samples;    // zero to many
+    Archive[] archives;  // zero to many
+}
+
+class Comment {
+    String comment;
+}
+
+class Release {
+    String name;
+    String region;
+    String language; // Nullable
+    String date;     // Nullable
+    String default;  // (yes|no) "no"
+}
+
+class Biosset {
+    String name;
+    String description;
+    String default;     // (yes|no) "no"
+}
+
+class Rom {
+    String name;
+    String size;
+    String crc;    // Nullable
+    String sha1;   // Nullable
+    String md5;    // Nullable
+    String merge;  // Nullable
+    String status; // (baddump|nodump|good|verified) "good"
+    String date;   // Nullable
+}
+
+class Disk {
+    String name;
+    String sha1;   // Nullable
+    String md5;    // Nullable
+    String merge;  // Nullable
+    String status; // (baddump|nodump|good|verified) "good"
+}
+
+class Sample {
+    String name;
+}
+
+class Archive {
+    String name;
+}

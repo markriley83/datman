@@ -1,0 +1,97 @@
+Table Datafile
+    Column datafile_pk // Not nullable
+    Column header_fk   // Nullable
+    Column build       // Nullable
+    column debug       // Not nullable
+
+Table Header
+    Column header_pk     // Not nullable
+    Column name          // Not nullable
+    Column description   // Not nullable
+    Column category      // Nullable
+    Column version       // Not nullable
+    Column date          // Nullable
+    Column author        // Not nullable
+    Column email         // Nullable
+    Column homepage      // Nullable
+    Column url           // Nullable
+    Column comment       // Nullable
+    Column clrmamepro_fk // Nullable
+    Column romcenter_fk  // Nullable
+
+Table Clrmamepro
+    Column clrmamepro_pk // Not nullable
+    Column header        // Nullable
+    Column forcemerging  // Not nullable
+    Column forcenodump   // Not nullable
+    Column forcepacking  // Not nullable
+
+Table Romcenter
+    Column romcenter_pk   // Not nullable
+    Column plugin         // Nullable
+    Column rommode        // Not nullable
+    Column biosmode       // Not nullable
+    Column samplemode     // Not nullable
+    Column lockrommode    // Not nullable
+    Column lockbiosmode   // Not nullable
+    Column locksamplemode // Not nullable
+
+Table Game
+    Column game_pk      // Not nullable
+    Column datafile_fk  // Not nullable
+    Column description  // Not nullable
+    Column name         // Not nullable
+    Column sourcefile   // Nullable
+    Column isbios       // Not nullable
+    Column cloneof      // Nullable
+    Column romof        // Nullable
+    Column sampleof     // Nullable
+    Column board        // Nullable
+    Column rebuildto    // Nullable
+    Column year         // Nullable
+    Column manufacturer // Nullable
+
+Table Comment
+    Column game_fk // Not nullable
+    Column comment // Not nullable
+
+Table Release
+    Column game_fk  // Not nullable
+    Column name     // Not nullable
+    Column region   // Not nullable
+    Column language // Nullable
+    Column date     // Nullable
+    Column default  // Not nullable
+
+Table Biosset
+    Column game_fk     // Not nullable
+    Column name        // Not nullable
+    Column description // Not nullable
+    Column default     // Not nullable
+
+Table Rom
+    Column game_fk // Not nullable
+    Column name    // Not nullable
+    Column size    // Not nullable
+    Column crc     // Nullable
+    Column sha1    // Nullable
+    Column md5     // Nullable
+    Column merge   // Nullable
+    Column status  // Not nullable
+    Column date    // Nullable
+
+Table Disk
+    Column game_fk // Not nullable
+    Column name    // Not nullable
+    Column sha1    // Nullable
+    Column md5     // Nullable
+    Column merge   // Nullable
+    Column status  // Not nullable
+
+Table Sample
+    Column game_fk // Not nullable
+    Column name    // Not nullable
+
+Table Archive
+    Column game_fk // Not nullable
+    Column name    // Not nullable

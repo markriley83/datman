@@ -1,0 +1,4 @@
+>>> with open('Watara Supervision - Games (TOSEC-v2013-10-03_CM).dat', 'r') as f:
+...     root = objectify.fromstring(f.read())
+...     objectify.annotate(root)
+...     print(objectify.dump(root))

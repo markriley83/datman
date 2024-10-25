@@ -1,0 +1,66 @@
+Profile - SQLite3 database file with a certain name. If not defined, then
+it looks in:
+
+os.path.join(os.path.expanduser("~"), .datman)
+
+Which should be a .datman databse in the user's home.
+
+The default name will be .datman. Users can specify whatever name they
+want though. So, mame.datman, tosec.datman, etc.
+
+The database will store:
+
+datfile locations
+rebuild locations
+default file dump
+
+datfile location would be something like ~/datman/datfiles/ and might contain
+no-intro/Atari 2600.dat. The rebuild location might be ~/roms/. Datman should
+place rebuilt roms into ~/roms/no-intro/Atari 2600. The datfile location has a
+reference to the rebuild location.
+
+The database file is the name of the database. This will normally be datman.db.
+
+Datfiles can be compressed.
+
+The database will store information on the datfiles, as pulled from the datfile.
+All known types of datfile should be supported. This includes clrmamepro,
+romcenter. XML and older plain text ones should be supported. When scanning the
+datfile, the name, location and checksums of the datfile will be stored.
+
+Scanning datfiles will have the option to either rebuild datfile database, or
+use the checksums to verify that it is already there. The user will have options
+of using just crc32, md5, and/or sha1.
+
+The rebuild location will/can be scanned. Users will have the option to scan
+just the names, crc32, sha1 and/or md5. The user can mix, match, have everything
+or only 1 thing.
+
+'Other' file locations can be scanned too. The results of these scans are stored
+in the database only. When scanning, the user will have the option to trust
+based on names, crc32, etc, based on previous scan.
+
+Fixes are found by comparing results from necessary tables to the found file
+tables. Any matches that consist of 'same location' will be ignored.
+
+Any files found in the rom root that aren't in the dats, and cannot be fixed
+will be moved out to a default location.
+
+Fixes are carried out by copying if a file is in the rom root. If a file isn't
+in the rom root, a choice of what is done will be offered. i.e. move or copy.
+
+All major archiving techniques should be handled. zip, 7z, rar, tarballs.
+Torrent7zip and TorrentZip should also be supported as compression algorithms.
+
+If an archive is found, the archive AND its contents should be scanned. Option
+to trust CRC given in archive.
+
+Option to flatten ROMs. i.e. take a rom root and rename everything to:
+
+/<rom root>/<size>-<crc32>-<md5>-<sha1>
+
+This will remove any duplicate roms from the sets.
+
+Include options for merging, split sets and no merging.
+
+I think that is it.
